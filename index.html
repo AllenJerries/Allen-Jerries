@@ -8,21 +8,21 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Define Custom Properties for the chosen professional glassmorphism look (Arctic/Aurora theme) */
+        /* Define Custom Properties */
         :root {
-            --base-bg: #0A0F1E; /* Deep Navy base */
-            --glass-bg: rgba(255, 255, 255, 0.05); /* Highly reflective frosty white */
+            --base-bg: #0A0F1E;
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             
-            --accent-primary: #2DD4BF; /* Cyan/Teal accent */
-            --accent-secondary: #F472B6; /* Pink/Magenta accent */
-            --accent-glow: #8B5CF6; /* Deep purple glow */
+            --accent-primary: #2DD4BF;
+            --accent-secondary: #F472B6;
+            --accent-glow: #8B5CF6;
 
             --text-primary: #F3F4F6;
             --text-secondary: #9CA3AF;
         }
 
-        /* Set base style with Inter font and background color */
+        /* Set base style */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--base-bg);
@@ -31,207 +31,155 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Custom Professional Glassmorphism Class --- */
+        /* --- NEW: Custom Premium Scrollbar for Desktop --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--base-bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.6); }
+
+        /* --- Glassmorphism Class --- */
         .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px); /* Strong professional blur */
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px; /* Modern aesthetic rounding */
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* Soft, subtle shadow */
-            transition: all 0.3s ease-in-out;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Advanced Hover Effects for Glass Panels */
         .glass-panel:hover {
-            transform: translateY(-5px); /* Lift up subtly */
-            box-shadow: 0 12px 48px 0 rgba(139, 92, 246, 0.25); /* Glow with accent-glow color */
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px 0 rgba(139, 92, 246, 0.25);
             border-color: var(--glass-border);
         }
 
-        /* Accent text styles using modern typography scales */
+        /* Text colors */
         .text-accent-cyan { color: var(--accent-primary); }
         .text-accent-pink { color: var(--accent-secondary); }
         .text-accent-glow { color: var(--accent-glow); }
 
-        /* Smooth border-bottom highlight on hover for sections */
         .hover-border {
             border-bottom: 2px solid transparent;
             transition: border-bottom 0.3s ease;
         }
-        .hover-border:hover {
-            border-bottom: 2px solid var(--accent-glow);
-        }
+        .hover-border:hover { border-bottom: 2px solid var(--accent-glow); }
 
-        /* Custom Glowing Card effect */
-        .glow-card {
-            border: 1px solid transparent;
-        }
+        .glow-card { border: 1px solid transparent; }
         .glow-card:hover {
             border-color: var(--accent-primary);
-            box-shadow: 0 0 15px rgba(45, 212, 191, 0.3);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.25);
         }
 
-        /* Contact icon card styles */
         .contact-icon-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .contact-icon-card:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--glass-border);
-            transform: scale(1.05);
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Timeline connector on Education section */
+        /* Timeline styles */
         .timeline-connector {
-            position: absolute;
-            width: 2px;
-            background-color: var(--glass-border);
-            top: 20px;
-            bottom: 20px;
-            left: -15px;
+            position: absolute; width: 2px; background-color: var(--glass-border);
+            top: 20px; bottom: 20px; left: -15px;
         }
         .timeline-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent-glow);
-            border-radius: 50%;
-            left: -20px;
-            top: 5px;
+            position: absolute; width: 10px; height: 10px;
+            background-color: var(--accent-glow); border-radius: 50%;
+            left: -20px; top: 5px;
+            box-shadow: 0 0 10px var(--accent-glow); /* Added a little glow to the dots */
         }
 
-        /* Dynamic text highlighting with typing effect */
+        /* Dynamic text */
         .dynamic-typed {
             border-right: 3px solid var(--accent-primary);
             animation: typing 2.5s steps(25) infinite alternate, blink 0.7s infinite;
-            white-space: nowrap;
-            overflow: hidden;
+            white-space: nowrap; overflow: hidden;
         }
         @keyframes typing { from { width: 0; } to { width: 100%; } }
         @keyframes blink { 50% { border-color: transparent; } }
 
-        /* --- Aesthetic Animated Background (Aurora/Northern Lights) --- */
+        /* --- Animated Background --- */
         .aurora-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            opacity: 0.25;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; opacity: 0.3; pointer-events: none;
         }
-        .aurora-element {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            animation: drift 20s infinite alternate;
-        }
-        .aurora-1 {
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-primary) 0%, rgba(45, 212, 191, 0) 70%);
-            top: -10%;
-            left: 20%;
-        }
-        .aurora-2 {
-            width: 500px;
-            height: 300px;
-            background: radial-gradient(circle, var(--accent-secondary) 0%, rgba(244, 114, 182, 0) 70%);
-            top: 40%;
-            left: 50%;
-            animation-delay: 5s;
-        }
-        .aurora-3 {
-            width: 700px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(139, 92, 246, 0) 70%);
-            bottom: -20%;
-            right: 10%;
-            animation-delay: 10s;
-        }
+        .aurora-element { position: absolute; border-radius: 50%; filter: blur(80px); animation: drift 20s infinite alternate; }
+        .aurora-1 { width: 600px; height: 400px; background: radial-gradient(circle, var(--accent-primary) 0%, rgba(45, 212, 191, 0) 70%); top: -10%; left: 20%; }
+        .aurora-2 { width: 500px; height: 300px; background: radial-gradient(circle, var(--accent-secondary) 0%, rgba(244, 114, 182, 0) 70%); top: 40%; left: 50%; animation-delay: 5s; }
+        .aurora-3 { width: 700px; height: 500px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(139, 92, 246, 0) 70%); bottom: -20%; right: 10%; animation-delay: 10s; }
         
-        @keyframes drift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 30px) scale(1.1); }
+        @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 30px) scale(1.1); } }
+
+        .profile-img-container { border: 5px solid transparent; border-radius: 50%; transition: border-color 0.3s ease; }
+        .profile-img-container:hover { border-color: var(--accent-glow); box-shadow: 0 0 25px rgba(139, 92, 246, 0.5); }
+
+        /* ========================================= */
+        /* --- UNIVERSAL ANIMATIONS (Monitor & Mobile) --- */
+        /* ========================================= */
+        
+        /* Smooth Scroll Reveal for ALL screen sizes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Profile image placeholder hover glow */
-        .profile-img-container {
-            border: 5px solid transparent;
-            border-radius: 50%;
-            transition: border-color 0.3s ease;
+        /* Breathing Avatar Glow for Desktop and Mobile */
+        @keyframes avatar-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(139, 92, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
         }
-        .profile-img-container:hover {
-            border-color: var(--accent-glow);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        .avatar-glow {
+            animation: avatar-pulse 2.5s infinite;
+        }
+
+        /* Cinematic Hero Load-In Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUpAnim 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        @keyframes fadeInUpAnim {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ========================================= */
-        /* --- MOBILE-ONLY ENHANCEMENTS & TWEAKS --- */
+        /* --- MOBILE-ONLY CONSTRAINTS --- */
         /* ========================================= */
-        
-        /* Hide dock on Desktop */
-        @media (min-width: 769px) {
-            .mobile-dock { display: none; }
-        }
+        @media (min-width: 769px) { .mobile-dock { display: none; } }
 
         @media (max-width: 768px) {
-            body {
-                -webkit-tap-highlight-color: transparent; /* Clean tap visual */
-            }
+            body { -webkit-tap-highlight-color: transparent; }
 
-            /* Floating Bottom Dock */
             .mobile-dock {
-                display: flex;
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-                max-width: 400px;
-                height: 65px;
-                background: rgba(10, 15, 30, 0.85);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid var(--glass-border);
-                border-radius: 35px;
-                z-index: 100;
-                justify-content: space-around;
-                align-items: center;
-                padding: 0 10px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                display: flex; position: fixed; bottom: 20px; left: 50%;
+                transform: translateX(-50%); width: 90%; max-width: 400px;
+                height: 65px; background: rgba(10, 15, 30, 0.85);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border); border-radius: 35px;
+                z-index: 100; justify-content: space-around; align-items: center;
+                padding: 0 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             }
 
-            /* Smooth Reveal (Mobile Only) */
-            .reveal {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 0.8s ease-out;
-            }
-            .reveal.active {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Mobile Pulse for Hero */
-            @keyframes mobile-pulse {
-                0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5); }
-                70% { box-shadow: 0 0 0 20px rgba(139, 92, 246, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
-            }
-            .mobile-glow {
-                animation: mobile-pulse 2s infinite;
-            }
-
-            /* Taptic Feedback (Active State Shrink) */
             .glass-panel:active, .contact-icon-card:active, .mobile-dock a:active {
-                transform: scale(0.96) !important;
-                transition: transform 0.1s ease;
+                transform: scale(0.96) !important; transition: transform 0.1s ease;
             }
         }
     </style>
@@ -251,7 +199,7 @@
         <a href="#contact" class="p-3 text-accent-pink"><i data-lucide="message-circle"></i></a>
     </div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 glass-panel !rounded-none !border-t-0 !border-x-0 bg-[rgba(10,15,30,0.8)] px-4 md:px-12 py-3 flex items-center justify-between">
+    <nav class="fade-in-up fixed top-0 left-0 w-full z-50 glass-panel !rounded-none !border-t-0 !border-x-0 bg-[rgba(10,15,30,0.8)] px-4 md:px-12 py-3 flex items-center justify-between">
         <div class="flex items-center gap-2">
             <span class="text-xl md:text-2xl font-extrabold text-accent-cyan hover-border tracking-tighter">ALL<span class="text-accent-pink">EN</span></span>
             <span class="text-secondary text-xs md:text-sm hidden sm:block">Portfolio</span>
@@ -265,11 +213,11 @@
         </div>
     </nav>
 
-    <header id="hero" class="reveal min-h-screen pt-28 pb-16 md:pt-32 md:pb-24 px-4 md:px-12 flex flex-col justify-center items-center text-center">
+    <header id="hero" class="min-h-screen pt-28 pb-16 md:pt-32 md:pb-24 px-4 md:px-12 flex flex-col justify-center items-center text-center">
         <div class="glass-panel p-6 md:p-10 max-w-7xl flex flex-col md:flex-row items-center gap-8 md:gap-10">
-            <div class="w-full md:w-1/3 flex flex-col items-center gap-6">
+            <div class="w-full md:w-1/3 flex flex-col items-center gap-6 fade-in-up delay-1">
                 <div class="profile-img-container relative flex items-center justify-center p-1 w-48 h-48 md:w-64 md:h-64 shrink-0">
-                    <img src="square.jpeg" alt="Allen Jerries A L Portrait" class="mobile-glow w-full h-full rounded-full object-cover shadow-inner bg-neutral-900 border-4 border-accent-glow">
+                    <img src="square.jpeg" alt="Allen Jerries A L Portrait" class="avatar-glow w-full h-full rounded-full object-cover shadow-inner bg-neutral-900 border-4 border-accent-glow">
                 </div>
                 
                 <div class="flex items-center gap-4">
@@ -289,16 +237,16 @@
             </div>
 
             <div class="w-full md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left gap-4">
-                <span class="text-accent-cyan text-xs md:text-sm font-semibold tracking-widest uppercase">COMPUTER SCIENCE ENGINEER</span>
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-tight">Allen Jerries A L</h1>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-light text-secondary flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
+                <span class="fade-in-up delay-2 text-accent-cyan text-xs md:text-sm font-semibold tracking-widest uppercase">COMPUTER SCIENCE ENGINEER</span>
+                <h1 class="fade-in-up delay-2 text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-tight">Allen Jerries A L</h1>
+                <h2 class="fade-in-up delay-3 text-xl sm:text-2xl md:text-3xl font-light text-secondary flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                     <i data-lucide="layers" class="w-6 h-6 md:w-7 md:h-7 text-accent-pink hidden sm:block"></i>
                     <span class="dynamic-typed inline-block">AI-INTEGRATED FULL STACK DEVELOPER</span>
                 </h2>
-                <p class="text-neutral-400 mt-4 md:mt-6 max-w-2xl text-base md:text-lg leading-relaxed">
+                <p class="fade-in-up delay-3 text-neutral-400 mt-4 md:mt-6 max-w-2xl text-base md:text-lg leading-relaxed">
                     A Computer Science Engineering student passionate about crafting impressive digital solutions. Skilled in developing scalable backend systems and full stack web applications using <span class="text-accent-cyan font-semibold">Python</span>, <span class="text-accent-pink font-semibold">React.js</span>, and <span class="text-accent-cyan font-semibold">Flask</span>. Currently focusing on AI integration and emerging IT solutions.
                 </p>
-                <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center gap-4 md:gap-5 justify-center md:justify-start w-full sm:w-auto">
+                <div class="fade-in-up delay-4 mt-8 md:mt-10 flex flex-col sm:flex-row items-center gap-4 md:gap-5 justify-center md:justify-start w-full sm:w-auto">
                     <a href="#about" class="w-full sm:w-auto px-6 py-3 md:px-8 md:py-3 bg-neutral-900 border border-glass-border hover:bg-neutral-800 text-white rounded-xl transition font-semibold flex items-center justify-center gap-2">Learn More <i data-lucide="info" class="w-4 h-4"></i></a>
                     <a href="#projects" class="w-full sm:w-auto px-6 py-3 md:px-8 md:py-3 bg-white hover:bg-neutral-200 text-neutral-950 rounded-xl transition font-semibold flex items-center justify-center gap-2">View Projects <i data-lucide="external-link" class="w-4 h-4"></i></a>
                 </div>
@@ -614,32 +562,24 @@
     <script>
         lucide.createIcons();
 
-        // --- NEW MOBILE INTERACTION SCRIPT ---
-        // Only run the reveal animation if on a mobile screen to ensure desktop stays 100% static as requested
+        // Universal Scroll Reveal Animation for Desktop AND Mobile
         function reveal() {
-            if (window.innerWidth <= 768) {
-                var reveals = document.querySelectorAll(".reveal");
-                for (var i = 0; i < reveals.length; i++) {
-                    var windowHeight = window.innerHeight;
-                    var elementTop = reveals[i].getBoundingClientRect().top;
-                    var elementVisible = 100;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveals[i].classList.add("active");
-                    }
-                }
-            } else {
-                // If on desktop, force all reveals to be instantly visible
-                var reveals = document.querySelectorAll(".reveal");
-                for (var i = 0; i < reveals.length; i++) {
-                    reveals[i].style.opacity = "1";
-                    reveals[i].style.transform = "translateY(0)";
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                // Triggers when the element enters the bottom of the screen
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
             }
         }
         
         window.addEventListener("scroll", reveal);
-        window.addEventListener("resize", reveal);
-        reveal(); // Run once on load
+        // Run once on load to reveal anything immediately visible
+        setTimeout(reveal, 100);
     </script>
 </body>
 </html>
